@@ -1,0 +1,885 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #222;
+}
+
+// BODY: 32.7cm x 13.5cm
+// left-right-gap: 0.6cm
+// top-gap: 0.6cm
+// bottom-gap: 1cm
+
+// KEYS
+// Normal: 1.3cm x 1.5cm
+// Backspace 3.1cm x 1.5cm
+// Tab 2.3cm x 1.5cm
+// \| 2.2cm x 1.5cm
+// Caps 2.8cm x 1.5cm
+// Enter 3.7cm x 1.5cm
+// Shift 3.7cm * 1.5cm
+// Shift right 2.7cm x 1.5cm
+// Ctrl / Win / Alt 1.8cm * 1.5cm
+// Space 11.4cm x 1.5cm 
+
+
+/* @mixin resize($size) {
+  :(0.6 * $scale);
+}
+ */
+
+
+$scale: 50px;
+
+$keyboardLeftRightGap: (0.6 * $scale);
+$keyboardTopGap: (0.6 * $scale);
+$keyboardBottomGap: (1 * $scale);
+$keyboardGeneralGap: (0.3 * $scale);
+
+$keyboardW: (32.7 * $scale);
+$keyboardH: (13.6 * $scale);
+
+
+$keyW: (1.86 * $scale);
+$keyH: (1.9 * $scale);
+
+$keyFaceW: (1.3 * $scale);
+$keyFaceH: (1.5 * $scale);
+
+$space: 4px;
+$keyWSpace: ($keyW + $space);
+$keyHSpace: ($keyH + $space);
+
+$keyBackspaceW: (3.7 * $scale);
+$keyBackspaceFaceW: (3.1 * $scale);
+
+$keyTabW: (2.8 * $scale);
+$keyTabFaceW: (2.3 * $scale);
+
+$keyBackslashW: (2.75 * $scale);
+$keyBackslashFaceW: (2.3 * $scale);
+
+$keyCapsW: (3.29 * $scale);
+$keyCapsFaceW: (2.8 * $scale);
+
+$keyEnterW: (4.2 * $scale);
+$keyEnterFaceW: (3.7 * $scale);
+
+$keyShiftLeftW: (4.3 * $scale);
+$keyShiftLeftFaceW: (3.7 * $scale);
+
+$keyShiftRightW: (3.3 * $scale);
+$keyShiftRightFaceW: (2.7 * $scale);
+
+$keyCtrlWinAltW: (2.4 * $scale);
+$keyCtrlWinAltFaceW: (1.8 * $scale);
+
+$keySpaceW: (11.9 * $scale);
+$keySpaceFaceW: (11.3 * $scale);
+
+
+
+
+
+$rowGeneralW: (29 * $scale);
+
+
+
+body {
+  //background: radial-gradient(circle at center, #2e2e2e, #1a1a1a);
+}
+
+
+.text {
+  width: $keyboardW;
+  //height: $keyboardH;
+}
+
+
+
+
+
+.keyboard {
+  display: flex;
+  width: $keyboardW;
+  height: $keyboardH;
+  position: relative;
+  background: #222;
+  background: linear-gradient(90deg, rgba(34, 34, 34, 1) 30%, rgba(17, 17, 17, 1) 100%);
+  margin: 0 auto;
+  margin-top: 80px;
+
+  border-radius: 10px;
+  box-shadow: 15px 15px 20px #bbb;
+}
+
+.main {
+  width: $rowGeneralW;
+  height: (6 * $keyHSpace) + $keyboardGeneralGap;
+
+  display: flex;
+  flex-direction: column;
+  margin-top: $keyboardTopGap;
+  margin-left: $keyboardLeftRightGap;
+}
+
+
+
+
+
+
+/* .key {
+  display: flex;
+  justify-content: center;
+  width: $keyW;
+  height: $keyH;
+  border-radius: 5px;
+  color: #222;
+  cursor: pointer;
+  //align-items: center;
+
+  p {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    width: $keyFaceW;
+    height: $keyFaceH;
+    //margin-top: 4px;
+    padding-top: 10px;
+    border-radius: 5px;
+    //box-shadow: 10px 10px 5px red;
+  }
+}
+
+.key.yellow {
+  background-color: #fc0;
+
+  p {
+    background-color: #fd0;
+    border: 1px solid #fa0;
+
+    &:hover {
+      border: 2px solid #fa0;
+    }
+  }
+}
+
+.key.gray {
+  background-color: #666;
+
+  p {
+    background-color: #777;
+    border: 1px solid #444;
+
+    &:hover {
+      border: 2px solid #444;
+    }
+  }
+}
+
+.key.white {
+  background-color: #eee;
+
+  p {
+    background-color: #fff;
+    border: 1px solid #ccc;
+
+    &:hover {
+      //border-color: transparent;
+      border: 2px solid #ccc;
+    }
+  }
+}
+ */
+
+
+
+
+
+.key {
+  display: flex;
+  justify-content: center;
+  width: $keyW;
+  height: $keyH;
+  border-radius: 5px;
+  color: #222;
+  cursor: pointer;
+  align-items: center;
+  box-sizing: border-box;
+
+  p {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    width: $keyFaceW;
+    height: $keyFaceH;
+    padding-top: 10px;
+    border-radius: 5px;
+    box-shadow:
+        20px 10px 20px rgba(0, 0, 0, 0.3),
+        40px 30px 30px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.key:hover {
+  transform: translateY(1px);
+  box-shadow: 0;
+}
+
+.key:active {
+  transform: scale(0.97);
+  box-shadow: 0;
+}
+
+
+
+.key.yellow {
+  background-color: #fc0;
+  border: 1px solid #fa0;
+
+  p {
+    background: #FFAA00;
+    background: linear-gradient(90deg, rgba(255, 170, 0, 1) 20%, rgba(255, 221, 0, 1) 100%);
+  }
+}
+
+.key.gray {
+  background-color: #777;
+
+  p {
+    background: #666;
+    background: linear-gradient(90deg, rgba(102, 102, 102, 1) 20%, rgba(136, 136, 136, 1) 100%);
+  }
+}
+
+.key.white {
+  background-color: #eee;
+  border: 1px solid #aaa;
+  
+  p {
+    background: #CDCDCD;
+    background: linear-gradient(90deg, rgba(205, 205, 205, 1) 20%, rgba(250, 250, 250, 1) 100%);
+  }
+}
+
+
+
+
+
+
+
+.main .row {
+  width: $rowGeneralW;
+  display: grid;
+  grid-template: $keyHSpace / $rowGeneralW;
+  justify-content: space-between;
+
+  .section {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    position: relative;
+    z-index: 1000;
+    animation: rgb 20s infinite ease-in;
+  }
+}
+
+
+@keyframes rgb {
+  1% {
+    background: #ff0000;
+    background: linear-gradient(90deg, rgba(255, 0, 0, 1) 30%, rgba(255, 162, 0, 1) 100%);
+  }
+
+
+
+  4% {
+    background: #ff0000;
+    background: linear-gradient(90deg, rgba(255, 0, 0, 1) 50%, rgba(255, 162, 0, 1) 100%);
+  }
+  6% {
+    background: #ff0000;
+    background: linear-gradient(90deg, rgba(255, 0, 0, 1) 70%, rgba(255, 162, 0, 1) 100%);
+  }
+  8% {
+    background: #ff0000;
+    background: linear-gradient(90deg, rgba(255, 0, 0, 1) 90%, rgba(255, 162, 0, 1) 100%);
+  }
+
+
+
+  10% {
+    background: #ffe500;
+    background: linear-gradient(90deg, rgba(255, 229, 0, 1) 30%, rgba(208, 255, 0, 1) 100%);
+  }
+
+
+
+  14% {
+    background: #ffe500;
+    background: linear-gradient(90deg, rgba(255, 229, 0, 1) 50%, rgba(208, 255, 0, 1) 100%);
+  }
+  16% {
+    background: #ffe500;
+    background: linear-gradient(90deg, rgba(255, 229, 0, 1) 70%, rgba(208, 255, 0, 1) 100%);
+  }
+  18% {
+    background: #ffe500;
+    background: linear-gradient(90deg, rgba(255, 229, 0, 1) 90%, rgba(208, 255, 0, 1) 100%);
+  }
+
+
+
+  20% {
+    background: #ffe500;
+    background: linear-gradient(90deg, rgba(255, 229, 0, 1) 30%, rgba(208, 255, 0, 1) 100%);
+  }
+
+  24% {
+    background: #ffe500;
+    background: linear-gradient(90deg, rgba(255, 229, 0, 1) 50%, rgba(208, 255, 0, 1) 100%);
+  }
+  26% {
+    background: #ffe500;
+    background: linear-gradient(90deg, rgba(255, 229, 0, 1) 70%, rgba(208, 255, 0, 1) 100%);
+  }
+  28% {
+    background: #ffe500;
+    background: linear-gradient(90deg, rgba(255, 229, 0, 1) 90%, rgba(208, 255, 0, 1) 100%);
+  }
+
+
+
+
+  30% {
+    background: #b7ff00;
+    background: linear-gradient(90deg, rgba(183, 255, 0, 1) 30%, rgba(38, 255, 0, 1) 100%);
+  }
+  34% {
+    background: #b7ff00;
+    background: linear-gradient(90deg, rgba(183, 255, 0, 1) 50%, rgba(38, 255, 0, 1) 100%);
+  }
+  36% {
+    background: #b7ff00;
+    background: linear-gradient(90deg, rgba(183, 255, 0, 1) 70%, rgba(38, 255, 0, 1) 100%);
+  }
+  38% {
+    background: #b7ff00;
+    background: linear-gradient(90deg, rgba(183, 255, 0, 1) 90%, rgba(38, 255, 0, 1) 100%);
+  }
+
+
+
+
+  40% {
+    background: #00ff88;
+    background: linear-gradient(90deg, rgba(0, 255, 136, 1) 30%, rgba(0, 255, 251, 1) 100%);
+  }
+  44% {
+    background: #00ff88;
+    background: linear-gradient(90deg, rgba(0, 255, 136, 1) 50%, rgba(0, 255, 251, 1) 100%);
+  }
+  46% {
+    background: #00ff88;
+    background: linear-gradient(90deg, rgba(0, 255, 136, 1) 70%, rgba(0, 255, 251, 1) 100%);
+  }
+  48% {
+    background: #00ff88;
+    background: linear-gradient(90deg, rgba(0, 255, 136, 1) 90%, rgba(0, 255, 251, 1) 100%);
+  }
+
+
+
+
+
+
+  50% {
+    background: #00eaff;
+    background: linear-gradient(90deg, rgba(0, 234, 255, 1) 30%, rgba(0, 145, 255, 1) 100%);
+  }
+  54% {
+    background: #00eaff;
+    background: linear-gradient(90deg, rgba(0, 234, 255, 1) 50%, rgba(0, 145, 255, 1) 100%);
+  }
+  56% {
+    background: #00eaff;
+    background: linear-gradient(90deg, rgba(0, 234, 255, 1) 70%, rgba(0, 145, 255, 1) 100%);
+  }
+  58% {
+    background: #00eaff;
+    background: linear-gradient(90deg, rgba(0, 234, 255, 1) 90%, rgba(0, 145, 255, 1) 100%);
+  }
+
+
+
+
+
+  60% {
+    background: #006fff;
+      background: linear-gradient(90deg, rgba(0, 111, 255, 1) 30%, rgba(0, 51, 255, 1) 100%);
+  }
+  64% {
+    background: #006fff;
+      background: linear-gradient(90deg, rgba(0, 111, 255, 1) 50%, rgba(0, 51, 255, 1) 100%);
+  }
+  66% {
+    background: #006fff;
+      background: linear-gradient(90deg, rgba(0, 111, 255, 1) 70%, rgba(0, 51, 255, 1) 100%);
+  }
+  68% {
+    background: #006fff;
+      background: linear-gradient(90deg, rgba(0, 111, 255, 1) 90%, rgba(0, 51, 255, 1) 100%);
+  }
+
+
+
+
+  70% {
+    background: #1500ff;
+    background: linear-gradient(90deg, rgba(21, 0, 255, 1) 30%, rgba(111, 0, 255, 1) 100%);
+  }
+  74% {
+    background: #1500ff;
+    background: linear-gradient(90deg, rgba(21, 0, 255, 1) 50%, rgba(111, 0, 255, 1) 100%);
+  }
+  76% {
+    background: #1500ff;
+    background: linear-gradient(90deg, rgba(21, 0, 255, 1) 70%, rgba(111, 0, 255, 1) 100%);
+  }
+  78% {
+    background: #1500ff;
+    background: linear-gradient(90deg, rgba(21, 0, 255, 1) 90%, rgba(111, 0, 255, 1) 100%);
+  }
+
+
+
+
+
+  80% {
+    background: #7b00ff;
+    background: linear-gradient(90deg, rgba(123, 0, 255, 1) 30%, rgba(195, 0, 255, 1) 100%);
+  }
+  84% {
+    background: #7b00ff;
+    background: linear-gradient(90deg, rgba(123, 0, 255, 1) 50%, rgba(195, 0, 255, 1) 100%);
+  }
+  86% {
+    background: #7b00ff;
+    background: linear-gradient(90deg, rgba(123, 0, 255, 1) 70%, rgba(195, 0, 255, 1) 100%);
+  }
+  88% {
+    background: #7b00ff;
+    background: linear-gradient(90deg, rgba(123, 0, 255, 1) 90%, rgba(195, 0, 255, 1) 100%);
+  }
+
+
+
+
+
+  90% {
+    background: #e100ff;
+    background: linear-gradient(90deg, rgba(225, 0, 255, 1) 30%, rgba(255, 0, 217, 1) 100%);
+  }
+  94% {
+    background: #e100ff;
+    background: linear-gradient(90deg, rgba(225, 0, 255, 1) 50%, rgba(255, 0, 217, 1) 100%);
+  }
+  96% {
+    background: #e100ff;
+    background: linear-gradient(90deg, rgba(225, 0, 255, 1) 70%, rgba(255, 0, 217, 1) 100%);
+  }
+  98% {
+    background: #e100ff;
+    background: linear-gradient(90deg, rgba(225, 0, 255, 1) 90%, rgba(255, 0, 217, 1) 100%);
+  }
+
+
+
+
+
+  100% {
+    background: #ff00bb;
+    background: linear-gradient(90deg, rgba(255, 0, 187, 1) 30%, rgba(255, 0, 43, 1) 100%);
+  }
+}
+
+
+
+
+
+
+//< !-- FILA 1: ESC+F1-F12+DEL -->
+.main .row:nth-child(1) {
+  width: $rowGeneralW;
+  display: grid;
+  grid-template: $keyHSpace / ($keyWSpace repeat(3, (4 * $keyWSpace)) $keyWSpace);
+  margin-bottom: $keyboardGeneralGap;
+  justify-content: space-between;
+
+  .section:nth-child(1),
+  .section:nth-child(5) {
+    display: grid;
+    grid-template: $keyHSpace / $keyWSpace;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .section:nth-child(2), 
+  .section:nth-child(3),
+  .section:nth-child(4) {
+    display: grid;
+    grid-template: $keyHSpace / repeat(4, $keyWSpace);
+    align-items: center;
+    justify-items: center;
+  }
+  
+}
+
+
+
+
+//< !-- FILA 2: NÚMEROS -->
+.main .row:nth-child(2) {
+  .section {
+    grid-template: $keyHSpace / repeat(13, $keyWSpace) calc($keyBackspaceW + $space);
+  }
+}
+
+.key[data-key="Backquote"] p {
+  font-size: 35px;
+}
+
+.key[data-key="Minus"] p {
+  font-size: 28px;
+}
+
+.key[data-key="Equal"] p {
+  font-size: 28px;
+}
+
+.key[data-key="Backspace"] {
+  width: $keyBackspaceW;
+
+  p {
+    font-size: 35px;
+    width: $keyBackspaceFaceW;
+  }
+}
+
+
+
+
+
+//< !-- FILA 3: Q - P -->
+.main .row:nth-child(3) {
+  .section {
+    grid-template-rows: $keyHSpace;
+    grid-template-columns: ($keyTabW + $space) repeat(12, $keyWSpace) ($keyBackslashW + $space);
+  }
+}
+
+.key[data-key="Tab"] {
+  width: $keyTabW;
+
+  p {
+    width: $keyTabFaceW;
+  }
+}
+
+.key[data-key="Backslash"] {
+  width: $keyBackslashW;
+
+  p {
+    width: $keyTabFaceW;
+  }
+}
+
+
+
+
+
+
+
+//< !-- FILA 4: A - L -->
+.main .row:nth-child(4) {
+  .section {
+    grid-template-rows: $keyHSpace;
+    grid-template-columns: ($keyCapsW + $space) repeat(11, $keyWSpace) ($keyEnterW + $space);
+  }
+}
+
+.key[data-key="CapsLock"] {
+  width: $keyCapsW;
+
+  p {
+    width: $keyCapsFaceW;
+  }
+}
+
+
+.key[data-key="Enter"] {
+  width: $keyEnterW;
+
+  p {
+    width: $keyEnterFaceW;
+  }
+}
+
+
+
+
+
+//< !-- FILA 5: Z - M -->
+.main .row:nth-child(5) {
+  .section {
+    grid-template-rows: $keyHSpace;
+    grid-template-columns: ($keyShiftLeftW + $space) repeat(10, $keyWSpace) ($keyShiftRightW + $space);
+  }
+}
+
+
+.key[data-key="ShiftLeft"] {
+  width: $keyShiftLeftW;
+
+  p {
+    width: $keyShiftLeftFaceW;
+  }
+}
+
+
+.key[data-key="ShiftRight"] {
+  width: $keyShiftRightW;
+
+  p {
+    width: $keyShiftRightFaceW;
+  }
+}
+
+
+
+
+//< !-- FILA 6: CONTROL -->
+.main .row:nth-child(6) {
+  .section {
+    grid-template-rows: $keyHSpace;
+    grid-template-columns: repeat(3, $keyCtrlWinAltW + $space) ($keySpaceW + $space) repeat(3, $keyWSpace);
+  }
+}
+
+
+
+.key[data-key="ControlLeft"],
+.key[data-key="MetaLeft"], 
+.key[data-key="AltLeft"] {
+  width: $keyCtrlWinAltW;
+
+  p {
+    width: $keyCtrlWinAltFaceW;
+  }
+}
+
+
+.key[data-key="Space"] {
+  width: $keySpaceW;
+
+  p {
+    //font-size: 24px;
+    font-weight: 1500;
+    width: $keySpaceFaceW;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+.extra {
+  //border: 2px solid green;
+  height: ($keyboardGeneralGap + (5 * $keyHSpace));
+  display: flex;
+  margin-top: $keyboardTopGap;
+  margin-left: 5px;
+  //flex-direction: row;
+  //width: 100px;
+
+  .row {
+    //border: 1px solid #1bf;
+  }
+}
+
+.extra .row.extra-keys {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: inherit;
+  margin-left: 5px;
+  //background-color: #EBCC01;
+  
+  .column:nth-child(1) {
+    margin-bottom: $keyboardGeneralGap;
+  }
+  
+  .column:nth-child(2) {
+    //border: 1px solid red;
+    
+    .section {
+      display: grid;
+      position: relative;
+      grid-template-columns: $keyWSpace;
+      grid-template-rows: repeat(4, $keyHSpace);
+      align-items: center;
+      justify-items: center;
+      background-color: #1bf;
+      z-index: 1000;
+      //background-color: #1bf;
+    }
+  }
+}
+
+
+.circle-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: $keyHSpace;
+  height: $keyHSpace;
+  background-color: #aaa;
+  //border: 2px #666 dashed;
+  //box-sizing: border-box;
+  border-radius: 50%;
+
+  p {
+    //margin: 0;
+    //padding: 0;
+    display: flex;
+    width: ($keyHSpace - 5);
+    height: ($keyHSpace - 5);
+    background-color: #222;
+    border-radius: 50%;
+  }
+}
+
+
+
+.extra .row.status {
+  height: (3 * $keyHSpace);
+  margin-top: $keyHSpace + $keyboardGeneralGap;
+  display: flex;
+  flex-direction: column;
+  //align-items: center;
+  //justify-content: center;
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    //align-items: center;
+    //justify-content: center;
+
+    .section:nth-child(1) {
+      margin-top: 70px;
+    }
+  }
+}
+
+
+
+.extra .row.status .column .section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 40px;
+  margin-top: 20px;
+  //border: 2px solid red;
+
+  
+  .led {
+    width: 10px;
+    height: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //background-color: greenyellow;
+    border-radius: 50%;
+    margin-bottom: 5px;
+    border: 1px solid #666;
+  }
+
+  p {
+    color: #fff;
+    font-size: 12px;
+  }
+}
+
+
+
+
+.arrows {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  //background-color: #fa0;
+  //z-index: 500;
+  //border: 2px solid red;
+  top: ((2 * $keyboardTopGap) + (4 * $keyHSpace));
+  left: (3 * ($keyCtrlWinAltW + $space)) + ($keySpaceW + $space) + (3 * $keyWSpace) + (1.5 * $keyboardLeftRightGap);
+  //justify-content: flex-end;
+  //flex-basis: 200px;
+  //border: 2px solid red;
+  width: (3 * $keyWSpace);
+  height: (2 * $keyWSpace);
+
+  .row:nth-child(1) {
+    display: flex;
+    width: inherit;
+    align-items: center;
+    justify-content: center;
+    
+    .section {
+      display: grid;
+      grid-template-columns: $keyWSpace;
+      grid-template-rows: $keyHSpace;
+      justify-items: center;
+      align-items: center;
+      background-color: #1bf;
+    }
+  }
+
+
+  .row:nth-child(2) {
+    //border: 2px solid greenyellow;
+    
+
+    .section {
+      background-color: #1bf;
+      display: grid;
+      grid-template-rows: $keyHSpace;
+      grid-template-columns: repeat(3, $keyWSpace);
+      justify-items: center;
+      align-items: center;
+    }
+  }
+
+}
+
+
+.arrows .row .section .key p {
+  font-size: 40px;
+}
+
+
+
+
+
