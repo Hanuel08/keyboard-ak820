@@ -2,6 +2,12 @@
 
 Simulador visual y auditivo del teclado mecánico AK820. Permite escribir con el teclado físico o hacer clic en las teclas virtuales para probar sonidos, efectos de retroiluminación RGB y estadísticas de escritura en tiempo real.
 
+![RGB](/media/images/keyboard-rgb.png)
+
+![White](/media/images/keyboard-white.png)
+
+![Dark](/media/images/keyboard-dark.png)
+
 ## Características
 
 - **Teclado virtual interactivo** con diseño fiel al AK820 (TKL + numpad layout)
